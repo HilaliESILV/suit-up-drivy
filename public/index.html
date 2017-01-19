@@ -2,10 +2,37 @@
 <html>
   <head>
     <title>CSS/HTML Workshop with Drivy</title>
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+	<script>
+		$(".name").focus(function(){
+		$(".help").slideDown(500);
+		}).blur(function(){
+		$(".help").slideUp(500);
+		});
+		
+		webshims.setOptions('waitReady', false);
+		webshims.setOptions('forms-ext', {types: 'date'});
+		webshims.polyfill('forms forms-ext');
+	</script>
+	
+	<link rel="stylesheet" style="text/css" href="style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
-    <div id="car">
+	<p class="copyright">
+		Merci à Scott Marshall pour ses exemples
+	</p>
+	<div class="wrapper">
+	<h1>Rent a Car</h1>
+	<form class="form" method="post">
+    <div id="cars">
       <input class="model" type="text" placeholder="Car model"/>
+    <div>
+      <p class="help">Peugeot, Citroen</p>
+    </div>
       <input class="price-by-day" type="number" placeholder="Price by day"/>
       <input class="price-by-km" type="number" placeholder="Price by km"/>
     </div>
@@ -13,7 +40,7 @@
       <input class="begin" type="date" placeholder="Rental begin date"/>
       <input class="end" type="date" placeholder="Rental end date"/>
       <input class="distance" type="number" placeholder="Distance in km"/>
-      <input class="option" type="checkbox" placeholder="Deductible option"/>
+      <!--input class="option" type="checkbox" placeholder="Deductible option"/-->
     </div>
     <button id="compute">Compute</button>
     <div id="actors"></div>
@@ -29,5 +56,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
     <script src="drivy.js"></script>
     <script src="index.js"></script>
+	</div>
+	</form>
   </body>
 </html>
